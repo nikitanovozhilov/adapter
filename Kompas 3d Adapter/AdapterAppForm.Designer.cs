@@ -110,6 +110,11 @@
             this.numericUpDown4.Size = new System.Drawing.Size(103, 20);
             this.numericUpDown4.TabIndex = 14;
             this.numericUpDown4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericUpDown4.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
             // 
             // numericUpDown3
             // 
@@ -118,6 +123,11 @@
             this.numericUpDown3.Size = new System.Drawing.Size(103, 20);
             this.numericUpDown3.TabIndex = 13;
             this.numericUpDown3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericUpDown3.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             // 
             // numericUpDown2
             // 
@@ -126,6 +136,11 @@
             this.numericUpDown2.Size = new System.Drawing.Size(103, 20);
             this.numericUpDown2.TabIndex = 12;
             this.numericUpDown2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericUpDown2.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
             // 
             // numericUpDown1
             // 
@@ -134,6 +149,11 @@
             this.numericUpDown1.Size = new System.Drawing.Size(103, 20);
             this.numericUpDown1.TabIndex = 11;
             this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
             // 
             // label5
             // 
@@ -192,6 +212,11 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "0.75",
+            "1.25",
+            "1.5",
+            "1.25"});
             this.comboBox1.Location = new System.Drawing.Point(102, 123);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(103, 21);

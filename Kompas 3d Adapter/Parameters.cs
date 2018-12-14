@@ -61,9 +61,24 @@ namespace KOMPAS_3D_Adapter
         public float WallTheckness { get; private set; }
 
 
-        private void Validate()
+       /* private void Validate()
         {
             var errorMessage = new List<String>();
+
+            if (BigDiameter - SmallDiameter = 5 && BigDiameter => 25 && BigDiameter <= 110)
+            {
+                errorMessage.Add("Большой диаметр переходной муфты должен " +
+                                 "быть больше малого диаметра минимум на 5 мм и находиться в диапозоне от 25 мм до 110 мм");
+            }
+
+            if (SmallDiameter >= 20 && SmallDiameter <= 105)
+            {
+                errorMessage.Add("Малый диаметр переходной муфты должен " +
+                                 "находиться в диапозоне от 20 мм до 105 мм");
+            }
+
+
         }
+        */
     }
 }

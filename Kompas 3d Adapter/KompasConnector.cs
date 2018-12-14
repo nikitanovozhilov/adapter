@@ -9,9 +9,7 @@ namespace KOMPAS_3D_Adapter
     public class KompasConnector
     {
         private KompasObject _kompasObject;
-        /// <summary>
-        /// Объект компаса.
-        /// </summary>
+
         public KompasObject KompasObject
         {
             get
