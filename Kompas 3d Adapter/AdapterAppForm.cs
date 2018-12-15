@@ -52,6 +52,31 @@ namespace Kompas_3d_Adapter
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void FieldBigDiameter_ValueChanged(object sender, EventArgs e)
+        {
+            FieldBigDiameter.Minimum = FieldSmallDiameter.Value 
+        }
+
+        private void FieldSmallDiameter_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FieldWallTheckness_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FieldHighAdapter_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FieldStepThread_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 
