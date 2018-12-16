@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2048
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KOMPAS 3D Adapter", "Kompas 3d Adapter\KOMPAS 3D Adapter.csproj", "{D21BE917-F5A5-40F5-B4D9-E314EBFE0BC6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdapterUI", "Kompas 3d Adapter\AdapterUI.csproj", "{D21BE917-F5A5-40F5-B4D9-E314EBFE0BC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdapterLibrary", "AdapterLibrary\AdapterLibrary.csproj", "{67AE1432-8D90-41B3-B2AF-0F94EC575F41}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{D21BE917-F5A5-40F5-B4D9-E314EBFE0BC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D21BE917-F5A5-40F5-B4D9-E314EBFE0BC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D21BE917-F5A5-40F5-B4D9-E314EBFE0BC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67AE1432-8D90-41B3-B2AF-0F94EC575F41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67AE1432-8D90-41B3-B2AF-0F94EC575F41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67AE1432-8D90-41B3-B2AF-0F94EC575F41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67AE1432-8D90-41B3-B2AF-0F94EC575F41}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

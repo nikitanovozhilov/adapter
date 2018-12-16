@@ -1,7 +1,7 @@
 ﻿using Kompas6API5;
 using System;
 
-namespace KOMPAS_3D_Adapter
+namespace AdapterLibrary
 {
     /// <summary>
     /// Работа с компасом.
@@ -21,6 +21,7 @@ namespace KOMPAS_3D_Adapter
                 _kompasObject = value;
             }
         }
+
         /// <summary>
         /// Запуск компаса.
         /// </summary>
@@ -37,6 +38,7 @@ namespace KOMPAS_3D_Adapter
                 _kompasObject.ActivateControllerAPI();
             }
         }
+
         /// <summary>
         /// Закрытие компаса.
         /// </summary>

@@ -7,19 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using KOMPAS_3D_Adapter;
+using AdapterLibrary;
 
 namespace Kompas_3d_Adapter
 {
     public partial class AdapterAppForm : Form
     {
         private KompasConnector _kompasConnector = new KompasConnector();
+
         private Parameters _parameters;
 
         public AdapterAppForm()
         {
             InitializeComponent();
-
         }
 
 
@@ -53,31 +53,17 @@ namespace Kompas_3d_Adapter
             }
         }
 
+        private void BuildButton_Click(object sender, EventArgs e)
+        {
+            var val = 0f;
+            float.TryParse(FieldStepThread.SelectedText, out val);
+            _parameters = new Parameters((float)FieldBigDiameter.Value, (float)FieldSmallDiameter.Value, 
+                                         (float)FieldHighAdapter.Value, (float)FieldWallThickness.Value, val);
+        }
+
         private void FieldBigDiameter_ValueChanged(object sender, EventArgs e)
         {
-            FieldBigDiameter.Minimum = FieldSmallDiameter.Value 
-        }
-
-        private void FieldSmallDiameter_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FieldWallTheckness_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FieldHighAdapter_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FieldStepThread_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+            FieldSmallDiameter.Maximum = FieldBigDiameter.Value - 10;
         }
     }
-
-
 }

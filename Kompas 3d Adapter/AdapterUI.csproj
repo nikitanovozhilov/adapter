@@ -52,8 +52,6 @@
     <Compile Include="AdapterAppForm.Designer.cs">
       <DependentUpon>AdapterAppForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="KompasConnector.cs" />
-    <Compile Include="Parameters.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AdapterAppForm.resx">
@@ -145,6 +143,12 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AdapterLibrary\AdapterLibrary.csproj">
+      <Project>{67ae1432-8d90-41b3-b2af-0f94ec575f41}</Project>
+      <Name>AdapterLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
