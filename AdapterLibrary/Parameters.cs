@@ -25,14 +25,14 @@ namespace AdapterLibrary
         /// <param name="smallDiameter">Малый диаметр.</param>
         /// <param name="stepThread">Шаг резьбы.</param>
         /// <param name="wallThickness">Толщина стенки муфты.</param>
-        public Parameters(float bigDiameter, float highAdapter, float smallDiameter, float stepThread,
-            float wallThickness)
+        public Parameters(float bigDiameter, float smallDiameter, float wallThickness,
+                          float highAdapter, float stepThread)
         {
             BigDiameter = bigDiameter;
-            HighAdapter = highAdapter;
             SmallDiameter = smallDiameter;
-            StepThread = stepThread;
+            HighAdapter = highAdapter;
             WallThickness = wallThickness;
+            StepThread = stepThread;
             
             Validate();
         }
@@ -86,7 +86,7 @@ namespace AdapterLibrary
         //Валидация данных по значению.
         private void Validate()
         {
-            if (BigDiameter - SmallDiameter <= 10)
+            if (BigDiameter - SmallDiameter < 10)
             {
                 throw new ArgumentException("Разница переходных диаметров должна быть не менее 10 мм");
             }
@@ -96,7 +96,7 @@ namespace AdapterLibrary
                 throw  new ArgumentException("Высота муфты должна находиться в диапозоне от 60 мм до 120 мм");
             }
 
-            if (float.IsNaN(StepThread))
+            if (StepThread == 0)
             {
                 throw new ArgumentException("Не введено значение шага резьбы.");
             }

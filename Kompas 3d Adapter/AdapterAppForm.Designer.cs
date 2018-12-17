@@ -33,6 +33,7 @@
             this.CloseKompasButton = new System.Windows.Forms.Button();
             this.StartKompasButton = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.FieldHighAdapter = new System.Windows.Forms.NumericUpDown();
             this.FieldWallThickness = new System.Windows.Forms.NumericUpDown();
             this.FieldSmallDiameter = new System.Windows.Forms.NumericUpDown();
             this.FieldBigDiameter = new System.Windows.Forms.NumericUpDown();
@@ -43,13 +44,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.FieldStepThread = new System.Windows.Forms.ComboBox();
-            this.FieldHighAdapter = new System.Windows.Forms.NumericUpDown();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FieldHighAdapter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FieldWallThickness)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FieldSmallDiameter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FieldBigDiameter)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FieldHighAdapter)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -104,6 +104,35 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Parameters";
             // 
+            // FieldHighAdapter
+            // 
+            this.FieldHighAdapter.DecimalPlaces = 2;
+            this.FieldHighAdapter.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.FieldHighAdapter.Location = new System.Drawing.Point(102, 97);
+            this.FieldHighAdapter.Maximum = new decimal(new int[] {
+            120,
+            0,
+            0,
+            0});
+            this.FieldHighAdapter.Minimum = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            this.FieldHighAdapter.Name = "FieldHighAdapter";
+            this.FieldHighAdapter.Size = new System.Drawing.Size(103, 20);
+            this.FieldHighAdapter.TabIndex = 14;
+            this.FieldHighAdapter.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.FieldHighAdapter.Value = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            // 
             // FieldWallThickness
             // 
             this.FieldWallThickness.DecimalPlaces = 2;
@@ -119,7 +148,7 @@
             0,
             0});
             this.FieldWallThickness.Minimum = new decimal(new int[] {
-            2,
+            3,
             0,
             0,
             0});
@@ -128,7 +157,7 @@
             this.FieldWallThickness.TabIndex = 13;
             this.FieldWallThickness.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.FieldWallThickness.Value = new decimal(new int[] {
-            2,
+            3,
             0,
             0,
             0});
@@ -198,7 +227,6 @@
             // 
             // BuildButton
             // 
-            this.BuildButton.Enabled = false;
             this.BuildButton.Location = new System.Drawing.Point(9, 157);
             this.BuildButton.Name = "BuildButton";
             this.BuildButton.Size = new System.Drawing.Size(196, 23);
@@ -259,35 +287,6 @@
             this.FieldStepThread.TabIndex = 0;
             this.FieldStepThread.Text = "1,5";
             // 
-            // FieldHighAdapter
-            // 
-            this.FieldHighAdapter.DecimalPlaces = 2;
-            this.FieldHighAdapter.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.FieldHighAdapter.Location = new System.Drawing.Point(102, 97);
-            this.FieldHighAdapter.Maximum = new decimal(new int[] {
-            120,
-            0,
-            0,
-            0});
-            this.FieldHighAdapter.Minimum = new decimal(new int[] {
-            60,
-            0,
-            0,
-            0});
-            this.FieldHighAdapter.Name = "FieldHighAdapter";
-            this.FieldHighAdapter.Size = new System.Drawing.Size(103, 20);
-            this.FieldHighAdapter.TabIndex = 14;
-            this.FieldHighAdapter.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.FieldHighAdapter.Value = new decimal(new int[] {
-            60,
-            0,
-            0,
-            0});
-            // 
             // AdapterAppForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -301,10 +300,10 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FieldHighAdapter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FieldWallThickness)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FieldSmallDiameter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FieldBigDiameter)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FieldHighAdapter)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -58,7 +58,7 @@ namespace Kompas_3d_Adapter
             var val = 0f;
             float.TryParse(FieldStepThread.SelectedText, out val);
             _parameters = new Parameters((float)FieldBigDiameter.Value, (float)FieldSmallDiameter.Value, 
-                                         (float)FieldHighAdapter.Value, (float)FieldWallThickness.Value, val);
+                                         (float)FieldWallThickness.Value, (float)FieldHighAdapter.Value, val);
         }
 
         private void FieldBigDiameter_ValueChanged(object sender, EventArgs e)
