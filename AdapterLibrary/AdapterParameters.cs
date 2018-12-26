@@ -9,7 +9,7 @@ namespace AdapterLibrary
     /// <summary>
     /// Параметры для построения.
     /// </summary>
-    public class Parameters
+    public class AdapterParameters
     {
         private float _bigDiameter;
         private float _highAdapter;
@@ -25,7 +25,7 @@ namespace AdapterLibrary
         /// <param name="smallDiameter">Малый диаметр.</param>
         /// <param name="stepThread">Шаг резьбы.</param>
         /// <param name="wallThickness">Толщина стенки муфты.</param>
-        public Parameters(float bigDiameter, float smallDiameter, float wallThickness,
+        public AdapterParameters(float bigDiameter, float smallDiameter, float wallThickness,
                           float highAdapter, float stepThread)
         {
             BigDiameter = bigDiameter;
@@ -43,7 +43,7 @@ namespace AdapterLibrary
         public float BigDiameter
         {
             get => _bigDiameter;
-            private set { _bigDiameter = value; }
+            private set => _bigDiameter = value;
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace AdapterLibrary
         public float SmallDiameter
         {
             get => _smallDiameter;
-            private set { _smallDiameter = value; }
+            private set => _smallDiameter = value;
         }
 
 
@@ -62,7 +62,7 @@ namespace AdapterLibrary
         public float HighAdapter
         {
             get => _highAdapter;
-            private set { _highAdapter = value; }
+            private set => _highAdapter = value;
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace AdapterLibrary
         public float StepThread
         {
             get => _stepThread;
-            private set { _stepThread = value; }
+            private set => _stepThread = value;
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace AdapterLibrary
         public float WallThickness
         {
             get => _wallThickness;
-            private set { _wallThickness = value; }
+            private set => _wallThickness = value;
         }
 
         //Валидация данных по значению.
@@ -96,7 +96,7 @@ namespace AdapterLibrary
                 throw  new ArgumentException("Высота муфты должна находиться в диапозоне от 60 мм до 120 мм");
             }
 
-            if (StepThread == 0)
+            if (StepThread == 0f)
             {
                 throw new ArgumentException("Не введено значение шага резьбы.");
             }

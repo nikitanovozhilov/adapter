@@ -15,7 +15,9 @@ namespace Kompas_3d_Adapter
     {
         private KompasConnector _kompasConnector = new KompasConnector();
 
-        private Parameters _parameters;
+        private AdapterParameters _parameters;
+
+        private AdapterBuilder _builder;
 
         public AdapterAppForm()
         {
@@ -56,9 +58,11 @@ namespace Kompas_3d_Adapter
         private void BuildButton_Click(object sender, EventArgs e)
         {
             var val = 0f;
-            float.TryParse(FieldStepThread.SelectedText, out val);
-            _parameters = new Parameters((float)FieldBigDiameter.Value, (float)FieldSmallDiameter.Value, 
+            float.TryParse(FieldStepThread.Text, out val);
+            _parameters = new AdapterParameters((float)FieldBigDiameter.Value, (float)FieldSmallDiameter.Value, 
                                          (float)FieldWallThickness.Value, (float)FieldHighAdapter.Value, val);
+            _builder = new AdapterBuilder(_kompasConnector);
+            _builder.AdapterBuild(_parameters);
         }
 
         private void FieldBigDiameter_ValueChanged(object sender, EventArgs e)

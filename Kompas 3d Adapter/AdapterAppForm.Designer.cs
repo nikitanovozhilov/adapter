@@ -227,6 +227,7 @@
             // 
             // BuildButton
             // 
+            this.BuildButton.Enabled = false;
             this.BuildButton.Location = new System.Drawing.Point(9, 157);
             this.BuildButton.Name = "BuildButton";
             this.BuildButton.Size = new System.Drawing.Size(196, 23);
