@@ -17,8 +17,7 @@ namespace Kompas_3d_Adapter
             InitializeComponent();
         }
 
-
-        private void StartKompasButton_Click_1(object sender, EventArgs e)
+        private void StartKompasButton_Click(object sender, EventArgs e)
         {
             try
             {
@@ -33,7 +32,7 @@ namespace Kompas_3d_Adapter
             }
         }
 
-        private void CloseKompasButton_Click_1(object sender, EventArgs e)
+        private void CloseKompasButton_Click(object sender, EventArgs e)
         {
             try
             {

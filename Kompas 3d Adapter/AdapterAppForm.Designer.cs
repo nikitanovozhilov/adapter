@@ -73,7 +73,7 @@
             this.CloseKompasButton.TabIndex = 1;
             this.CloseKompasButton.Text = "Close";
             this.CloseKompasButton.UseVisualStyleBackColor = true;
-            this.CloseKompasButton.Click += new System.EventHandler(this.CloseKompasButton_Click_1);
+            this.CloseKompasButton.Click += new System.EventHandler(this.CloseKompasButton_Click);
             // 
             // StartKompasButton
             // 
@@ -83,7 +83,7 @@
             this.StartKompasButton.TabIndex = 0;
             this.StartKompasButton.Text = "Start";
             this.StartKompasButton.UseVisualStyleBackColor = true;
-            this.StartKompasButton.Click += new System.EventHandler(this.StartKompasButton_Click_1);
+            this.StartKompasButton.Click += new System.EventHandler(this.StartKompasButton_Click);
             // 
             // groupBox2
             // 
@@ -111,9 +111,9 @@
             this.ThreadCheck.AutoSize = true;
             this.ThreadCheck.Location = new System.Drawing.Point(99, 150);
             this.ThreadCheck.Name = "ThreadCheck";
-            this.ThreadCheck.Size = new System.Drawing.Size(110, 17);
+            this.ThreadCheck.Size = new System.Drawing.Size(85, 17);
             this.ThreadCheck.TabIndex = 15;
-            this.ThreadCheck.Text = "Внешняя резьба";
+            this.ThreadCheck.Text = "Outer thread";
             this.ThreadCheck.UseVisualStyleBackColor = true;
             // 
             // FieldHighAdapter
@@ -298,6 +298,7 @@
             this.FieldStepThread.Name = "FieldStepThread";
             this.FieldStepThread.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.FieldStepThread.Size = new System.Drawing.Size(103, 21);
+            this.FieldStepThread.Sorted = true;
             this.FieldStepThread.TabIndex = 0;
             // 
             // AdapterAppForm

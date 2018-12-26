@@ -19,7 +19,7 @@ namespace AdapterUnitTest
             _parameters = new AdapterParameters(30, 20, 5, 60, 1, false);
         }
 
-        [Test(Description = "Позитивный тест конструктора класса ")]
+        [Test(Description = "Позитивный тест конструктора класса AdapterParameters")]
         public void TestParameters_CorrectValue()
         {
             var expectedParameters = new AdapterParameters(30, 20, 5, 60, 1, false);
@@ -76,19 +76,15 @@ namespace AdapterUnitTest
         [TestCase(30, 25, 5, 60, 1, false, "SmallDiameter",
             TestName = "Негативный тест поля SmallDiameter если SmallDiameter - BigDiameter < 10")]
         [TestCase(30, 10, 5, 60, 1, false, "SmallDiameter",
-            TestName = "Негативный тест поля SmallDiameter если < 10")]
-        [TestCase(30, 110, 5, 60, 1, false, "SmallDiameter",
+            TestName = "Негативный тест поля SmallDiameter если < 20")]
+        [TestCase(110, 101, 5, 60, 1, false, "SmallDiameter",
             TestName = "Негативный тест поля SmallDiameter если > 100")]
         [TestCase(30, 20, 12, 60, 1, false, "WallThickness",
-            TestName = "Негативный тест поля WallThickness если > 12")]
+            TestName = "Негативный тест поля WallThickness если > 10")]
         [TestCase(30, 20, 2, 60, 1, false, "WallThickness",
             TestName = "Негативный тест поля WallThickness если < 3")]
         [TestCase(30, 20, 5, 500, 1, false, "HighAdapter",
             TestName = "Негативный тест поля HighAdapter если > 120")]
-        [TestCase(30, 20, 5, 30, 1, false, "HighAdapter",
-            TestName = "Негативный тест поля HighAdapter если < 60")]
-        [TestCase(30, 20, 5, 30, 1, false, "HighAdapter",
-            TestName = "Негативный тест поля HighAdapter если < 60")]
         [TestCase(30, 20, 5, 30, 1, false, "HighAdapter",
             TestName = "Негативный тест поля HighAdapter если < 60")]
 

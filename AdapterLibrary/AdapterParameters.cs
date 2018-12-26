@@ -17,12 +17,12 @@ namespace AdapterLibrary
         /// <summary>
         /// Создание параметров.
         /// </summary>
-        /// <param name="bigDiameter">Большой диаметр.</param>
-        /// <param name="highAdapter">Высота муфты.</param>
-        /// <param name="smallDiameter">Малый диаметр.</param>
-        /// <param name="stepThread">Шаг резьбы.</param>
-        /// <param name="wallThickness">Толщина стенки муфты.</param>
-        /// <param name="outerThread">Внешняя резьба.</param>
+        /// <param name="bigDiameter"></param>
+        /// <param name="smallDiameter"></param>
+        /// <param name="wallThickness"></param>
+        /// <param name="highAdapter"></param>
+        /// <param name="stepThread"></param>
+        /// <param name="outerThread"></param>
         public AdapterParameters(float bigDiameter, float smallDiameter, float wallThickness,
                           float highAdapter, float stepThread, bool outerThread)
         {

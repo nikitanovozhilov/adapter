@@ -21,9 +21,6 @@ namespace AdapterLibrary
         /// </summary>
         private KompasConnector _kompasConnector;
 
-        //Начало кооринат.
-        const int start = 0;
-
         /// <summary>
         /// Конструктор класса
         /// </summary>
@@ -41,7 +38,7 @@ namespace AdapterLibrary
         }
 
         /// <summary>
-        /// Метод, создающий эскиз
+        /// Метод, создающий эскиз.
         /// </summary>
         /// <param name="plane">Плоскость, эскиз которой будет создан</param>
         private void CreateSketch(short plane)
@@ -55,7 +52,7 @@ namespace AdapterLibrary
         }
 
         /// <summary>
-        /// Метод для выдавливания вращением осовного эскиза
+        /// Метод для выдавливания вращением основного эскиза.
         /// </summary>
         private ksEntity RotateSketch()
         {
@@ -70,14 +67,15 @@ namespace AdapterLibrary
             entityRotated.Create();
             return entityRotated;
         }
-        
+
         /// <summary>
-        /// Эскиз муфты
+        /// Метод, создающий эскиз муфты.
         /// </summary>
-        /// <param name="externalRadiusOutRim"></param>
-        /// <param name="externalRadiusInRim"></param>
-        /// <param name="internalRadiusInRim"></param>
-        /// <param name="widthBearing"></param>
+        /// <param name="bigDiameter"></param>
+        /// <param name="smallDiameter"></param>
+        /// <param name="wallThickness"></param>
+        /// <param name="highAdapter"></param>
+        /// <param name="stepThread"></param>
         private void AdapterSketch(float bigDiameter, float smallDiameter, float wallThickness,
                                   float highAdapter, float stepThread)
         {
@@ -87,17 +85,17 @@ namespace AdapterLibrary
             var smallCoordX = smallDiameter / 2 - halfSketchThread;
             CreateSketch((short)Obj3dType.o3d_planeYOZ);
             _sketchEdit = (ksDocument2D)_sketchDefinition.BeginEdit();
-            _sketchEdit.ksLineSeg(start + (bigCoordX - wallThickness), 0, start + bigCoordX, 0, 1);
-            _sketchEdit.ksLineSeg(start + bigCoordX, 0, start + bigCoordX, halfHigh + wallThickness, 1);
-            _sketchEdit.ksLineSeg(start + bigCoordX, (halfHigh + wallThickness),
-                start + (smallCoordX + wallThickness), (halfHigh + wallThickness), 1);
-            _sketchEdit.ksLineSeg(start + (smallCoordX + wallThickness), (halfHigh + wallThickness),
-                start + (smallCoordX + wallThickness), (halfHigh * 2 + wallThickness), 1);
-            _sketchEdit.ksLineSeg(start + (smallCoordX + wallThickness), (halfHigh * 2 + wallThickness),
-                start + smallCoordX, (halfHigh * 2 + wallThickness), 1);
-            _sketchEdit.ksLineSeg(start + smallCoordX, (halfHigh * 2 + wallThickness), start + smallCoordX, halfHigh, 1);
-            _sketchEdit.ksLineSeg(start + smallCoordX, halfHigh, start + (bigCoordX - wallThickness), halfHigh, 1);
-            _sketchEdit.ksLineSeg(start + (bigCoordX - wallThickness), halfHigh, start + (bigCoordX - wallThickness), 0, 1);
+            _sketchEdit.ksLineSeg((bigCoordX - wallThickness), 0, bigCoordX, 0, 1);
+            _sketchEdit.ksLineSeg(bigCoordX, 0, bigCoordX, halfHigh + wallThickness, 1);
+            _sketchEdit.ksLineSeg(bigCoordX, (halfHigh + wallThickness),
+                (smallCoordX + wallThickness), (halfHigh + wallThickness), 1);
+            _sketchEdit.ksLineSeg((smallCoordX + wallThickness), (halfHigh + wallThickness),
+                (smallCoordX + wallThickness), (halfHigh * 2 + wallThickness), 1);
+            _sketchEdit.ksLineSeg((smallCoordX + wallThickness), (halfHigh * 2 + wallThickness),
+                smallCoordX, (halfHigh * 2 + wallThickness), 1);
+            _sketchEdit.ksLineSeg(smallCoordX, (halfHigh * 2 + wallThickness),smallCoordX, halfHigh, 1);
+            _sketchEdit.ksLineSeg(smallCoordX, halfHigh,(bigCoordX - wallThickness), halfHigh, 1);
+            _sketchEdit.ksLineSeg((bigCoordX - wallThickness), halfHigh, (bigCoordX - wallThickness), 0, 1);
             _sketchEdit.ksLineSeg(0, 0, 0, 10, 3);
             _sketchDefinition.EndEdit();
             RotateSketch();
@@ -360,7 +358,7 @@ namespace AdapterLibrary
             var stepThread = parameters.StepThread;
             var outerThread = parameters.OuterThread;
 
-            if (outerThread == true)
+            if (outerThread)
             {
                 bigDiameter = bigDiameter - wallThickness;
                 smallDiameter = smallDiameter - wallThickness;
