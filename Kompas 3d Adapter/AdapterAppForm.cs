@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AdapterLibrary;
+using System;
 using System.Windows.Forms;
-using AdapterLibrary;
 
 namespace Kompas_3d_Adapter
 {
@@ -60,7 +53,7 @@ namespace Kompas_3d_Adapter
             var val = 0f;
             float.TryParse(FieldStepThread.Text, out val);
             _parameters = new AdapterParameters((float)FieldBigDiameter.Value, (float)FieldSmallDiameter.Value, 
-                                         (float)FieldWallThickness.Value, (float)FieldHighAdapter.Value, val);
+                                         (float)FieldWallThickness.Value, (float)FieldHighAdapter.Value, val, ThreadCheck.Checked);
             _builder = new AdapterBuilder(_kompasConnector);
             _builder.AdapterBuild(_parameters);
         }

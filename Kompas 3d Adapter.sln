@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdapterUI", "Kompas 3d Adap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdapterLibrary", "AdapterLibrary\AdapterLibrary.csproj", "{67AE1432-8D90-41B3-B2AF-0F94EC575F41}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdapterUnitTest", "AdapterUnitTest\AdapterUnitTest.csproj", "{A2937199-428F-4B24-B971-85F4FF5E4986}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{67AE1432-8D90-41B3-B2AF-0F94EC575F41}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67AE1432-8D90-41B3-B2AF-0F94EC575F41}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67AE1432-8D90-41B3-B2AF-0F94EC575F41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2937199-428F-4B24-B971-85F4FF5E4986}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2937199-428F-4B24-B971-85F4FF5E4986}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2937199-428F-4B24-B971-85F4FF5E4986}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2937199-428F-4B24-B971-85F4FF5E4986}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

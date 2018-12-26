@@ -33,6 +33,7 @@
             this.CloseKompasButton = new System.Windows.Forms.Button();
             this.StartKompasButton = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.ThreadCheck = new System.Windows.Forms.CheckBox();
             this.FieldHighAdapter = new System.Windows.Forms.NumericUpDown();
             this.FieldWallThickness = new System.Windows.Forms.NumericUpDown();
             this.FieldSmallDiameter = new System.Windows.Forms.NumericUpDown();
@@ -86,6 +87,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.ThreadCheck);
             this.groupBox2.Controls.Add(this.FieldHighAdapter);
             this.groupBox2.Controls.Add(this.FieldWallThickness);
             this.groupBox2.Controls.Add(this.FieldSmallDiameter);
@@ -99,10 +101,20 @@
             this.groupBox2.Controls.Add(this.FieldStepThread);
             this.groupBox2.Location = new System.Drawing.Point(13, 78);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(215, 189);
+            this.groupBox2.Size = new System.Drawing.Size(215, 207);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Parameters";
+            // 
+            // ThreadCheck
+            // 
+            this.ThreadCheck.AutoSize = true;
+            this.ThreadCheck.Location = new System.Drawing.Point(99, 150);
+            this.ThreadCheck.Name = "ThreadCheck";
+            this.ThreadCheck.Size = new System.Drawing.Size(110, 17);
+            this.ThreadCheck.TabIndex = 15;
+            this.ThreadCheck.Text = "Внешняя резьба";
+            this.ThreadCheck.UseVisualStyleBackColor = true;
             // 
             // FieldHighAdapter
             // 
@@ -228,7 +240,7 @@
             // BuildButton
             // 
             this.BuildButton.Enabled = false;
-            this.BuildButton.Location = new System.Drawing.Point(9, 157);
+            this.BuildButton.Location = new System.Drawing.Point(9, 173);
             this.BuildButton.Name = "BuildButton";
             this.BuildButton.Size = new System.Drawing.Size(196, 23);
             this.BuildButton.TabIndex = 8;
@@ -274,6 +286,7 @@
             // 
             // FieldStepThread
             // 
+            this.FieldStepThread.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.FieldStepThread.FormattingEnabled = true;
             this.FieldStepThread.Items.AddRange(new object[] {
             "0,75",
@@ -283,19 +296,19 @@
             "3"});
             this.FieldStepThread.Location = new System.Drawing.Point(102, 123);
             this.FieldStepThread.Name = "FieldStepThread";
-            this.FieldStepThread.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.FieldStepThread.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.FieldStepThread.Size = new System.Drawing.Size(103, 21);
             this.FieldStepThread.TabIndex = 0;
-            this.FieldStepThread.Text = "1,5";
             // 
             // AdapterAppForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(240, 276);
+            this.ClientSize = new System.Drawing.Size(240, 297);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(256, 336);
             this.Name = "AdapterAppForm";
             this.Text = "Adapter";
             this.groupBox1.ResumeLayout(false);
@@ -326,6 +339,7 @@
         private System.Windows.Forms.NumericUpDown FieldSmallDiameter;
         private System.Windows.Forms.NumericUpDown FieldBigDiameter;
         private System.Windows.Forms.NumericUpDown FieldHighAdapter;
+        private System.Windows.Forms.CheckBox ThreadCheck;
     }
 }
 
