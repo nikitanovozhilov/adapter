@@ -1,5 +1,6 @@
 ﻿using AdapterLibrary;
 using System;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace Kompas_3d_Adapter
@@ -50,9 +51,9 @@ namespace Kompas_3d_Adapter
         private void BuildButton_Click(object sender, EventArgs e)
         {
             var val = 0f;
-            float.TryParse(FieldStepThread.Text, out val);
+            float.TryParse(FieldStepThread.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out val);
             _parameters = new AdapterParameters((float)FieldBigDiameter.Value, (float)FieldSmallDiameter.Value, 
-                                         (float)FieldWallThickness.Value, (float)FieldHighAdapter.Value, val, ThreadCheck.Checked);
+                                         (float)FieldWallThickness.Value, (float)FieldHighAdapter.Value, val, (float)FieldFilletAngle.Value);
             _builder = new AdapterBuilder(_kompasConnector);
             _builder.AdapterBuild(_parameters);
         }

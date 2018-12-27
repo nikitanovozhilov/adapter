@@ -161,66 +161,6 @@ namespace AdapterLibrary
         }
 
         /// <summary>
-        /// Метод построения внешней резьбы большого диаметра.
-        /// </summary>
-        /// <param name="bigDiameter">Большой диаметр</param>
-        /// <param name="highAdapter">Высота муфты</param>
-        /// <param name="stepThread">Шаг резьбы</param>
-        /// <param name="wallThickness">Ширина стенки</param>
-        private void BigDiameterThreadOuter(float bigDiameter, float highAdapter, float stepThread, float wallThickness)
-        {
-
-            //Создание смещенной плоскости.
-            _part = _doc3D.GetPart((short)Part_Type.pTop_Part);
-            ksEntity entityDrawOffset = _part.NewEntity((short)Obj3dType.o3d_planeOffset);
-            ksPlaneOffsetDefinition planeDefinition = entityDrawOffset.GetDefinition();
-            planeDefinition.offset = 2;
-            planeDefinition.direction = true;
-            ksEntity EntityPlaneOffset = _part.GetDefaultEntity((short)Obj3dType.o3d_planeXOZ);
-            planeDefinition.SetPlane(EntityPlaneOffset);
-            entityDrawOffset.Create();
-
-            //Создание цилиндрической спирали.
-            var height = highAdapter / 2 + wallThickness + 2;
-            var diameter = wallThickness * 2 + bigDiameter - (0.5 * stepThread * (60.0 * Math.PI / 180.0));
-            ksEntity entityCylinderic = _part.NewEntity((short)Obj3dType.o3d_cylindricSpiral);
-            ksCylindricSpiralDefinition cylindericSpiral = entityCylinderic.GetDefinition();
-            cylindericSpiral.SetPlane(entityDrawOffset);
-            cylindericSpiral.buildDir = false;
-            cylindericSpiral.buildMode = 1;
-            cylindericSpiral.diam = diameter;
-            cylindericSpiral.firstAngle = 180;
-            cylindericSpiral.height = planeDefinition.offset + height;
-            cylindericSpiral.step = stepThread;
-            cylindericSpiral.turnDir = false;
-            entityCylinderic.Create();
-
-            //Эскиз профиля резьбы.
-            CreateSketch((short)Obj3dType.o3d_planeXOY);
-            _sketchEdit = (ksDocument2D)_sketchDefinition.BeginEdit();
-            var startY = 2 - stepThread / 2 + 0.01;
-            var startX = -(wallThickness + bigDiameter / 2 - (0.5 * stepThread * (60.0 * Math.PI / 180.0)) / 2);
-            _sketchEdit.ksLineSeg(
-                startX, startY, startX, startY + stepThread - 0.02, 1);
-            _sketchEdit.ksLineSeg
-                (startX, startY + stepThread - 0.02, startX + stepThread - 0.02, 2, 1);
-            _sketchEdit.ksLineSeg
-                (startX + stepThread - 0.02, 2, startX, startY, 1);
-            _sketchDefinition.EndEdit();
-
-            //Операция вырезать по траектории.
-            ksEntity entityCutEvolution = _part.NewEntity((short)Obj3dType.o3d_cutEvolution);
-            ksCutEvolutionDefinition cutEvolutionDefinition = entityCutEvolution.GetDefinition();
-            cutEvolutionDefinition.cut = true;
-            cutEvolutionDefinition.sketchShiftType = 1;
-            cutEvolutionDefinition.SetSketch(_sketchDefinition);
-            ksEntityCollection EntityCollection = (cutEvolutionDefinition.PathPartArray());
-            EntityCollection.Clear();
-            EntityCollection.Add(entityCylinderic);
-            entityCutEvolution.Create();
-        }
-
-        /// <summary>
         /// Метод для построения резьбы малого диаметра.
         /// </summary>
         /// <param name="smallDiameter">Малый диметр</param>
@@ -280,64 +220,18 @@ namespace AdapterLibrary
             entityCutEvolution.Create();
         }
 
-        /// <summary>
-        /// Метод построения внешней резьбы малого диаметра.
-        /// </summary>
-        /// <param name="smallDiameter">Малый диаметр</param>
-        /// <param name="highAdapter">Высота муфты</param>
-        /// <param name="stepThread">Шаг резьбы</param>
-        /// <param name="wallThickness">Ширина стенки</param>
-        private void SmallDiameterThreadOuter(float smallDiameter, float highAdapter, float stepThread, float wallThickness)
+        private void CreateFillet(float filletAngle)
         {
-
-            //Создание смещенной плоскости.
-            _part = _doc3D.GetPart((short)Part_Type.pTop_Part);
-            ksEntity entityDrawOffset = _part.NewEntity((short)Obj3dType.o3d_planeOffset);
-            ksPlaneOffsetDefinition planeDefinition = entityDrawOffset.GetDefinition();
-            planeDefinition.offset = highAdapter + 2;
-            planeDefinition.direction = false;
-            ksEntity EntityPlaneOffset = _part.GetDefaultEntity((short)Obj3dType.o3d_planeXOZ);
-            planeDefinition.SetPlane(EntityPlaneOffset);
-            entityDrawOffset.Create();
-
-            //Создание цилиндрической спирали.
-            var height = highAdapter / 2 + wallThickness / 2;
-            var diameter = wallThickness * 2 + smallDiameter - (0.5 * stepThread * (60.0 * Math.PI / 180.0));
-            ksEntity entityCylinderic = _part.NewEntity((short)Obj3dType.o3d_cylindricSpiral);
-            ksCylindricSpiralDefinition cylindericSpiral = entityCylinderic.GetDefinition();
-            cylindericSpiral.SetPlane(entityDrawOffset);
-            cylindericSpiral.buildDir = true;
-            cylindericSpiral.buildMode = 1;
-            cylindericSpiral.diam = diameter;
-            cylindericSpiral.firstAngle = 180;
-            cylindericSpiral.height = planeDefinition.offset - height;
-            cylindericSpiral.step = stepThread;
-            cylindericSpiral.turnDir = true;
-            entityCylinderic.Create();
-
-            //Эскиз профиля резьбы.
-            CreateSketch((short)Obj3dType.o3d_planeXOY);
-            _sketchEdit = (ksDocument2D)_sketchDefinition.BeginEdit();
-            var startY = (stepThread / 2 - 2 - 0.01) - highAdapter;
-            var startX = -(wallThickness + smallDiameter / 2 - (0.5 * stepThread * (60.0 * Math.PI / 180.0)) / 2);
-            _sketchEdit.ksLineSeg
-                (startX, startY, startX, startY - stepThread + 0.02, 1);
-            _sketchEdit.ksLineSeg
-                (startX, startY - stepThread + 0.02, startX + stepThread - 0.02, -highAdapter - 2, 1);
-            _sketchEdit.ksLineSeg
-                (startX + stepThread - 0.02, -highAdapter - 2, startX, startY, 1);
-            _sketchDefinition.EndEdit();
-
-            //Операция вырезать по траектории.
-            ksEntity entityCutEvolution = _part.NewEntity((short)Obj3dType.o3d_cutEvolution);
-            ksCutEvolutionDefinition cutEvolutionDefinition = entityCutEvolution.GetDefinition();
-            cutEvolutionDefinition.cut = true;
-            cutEvolutionDefinition.sketchShiftType = 1;
-            cutEvolutionDefinition.SetSketch(_sketchDefinition);
-            ksEntityCollection EntityCollection = cutEvolutionDefinition.PathPartArray();
-            EntityCollection.Clear();
-            EntityCollection.Add(entityCylinderic);
-            entityCutEvolution.Create();
+            ksEntity entityFillet = _part.NewEntity((short)Obj3dType.o3d_fillet);
+            FilletDefinition filletDefinition = entityFillet.GetDefinition();
+            filletDefinition.radius = filletAngle;
+            filletDefinition.tangent = true;
+            ksEntityCollection entityCollectionPart = _part.EntityCollection((short)Obj3dType.o3d_edge);
+            ksEntityCollection entityCollectionFillet = filletDefinition.array();
+            entityCollectionFillet.Clear();
+            entityCollectionFillet.Add(entityCollectionPart.GetByIndex(5));
+            entityCollectionFillet.Add(entityCollectionPart.GetByIndex(6));
+            entityFillet.Create();
         }
 
         public void AdapterBuild(AdapterParameters parameters)
@@ -356,22 +250,12 @@ namespace AdapterLibrary
             var wallThickness = parameters.WallThickness;
             var highAdapter = parameters.HighAdapter;
             var stepThread = parameters.StepThread;
-            var outerThread = parameters.OuterThread;
+            var filletAngle = parameters.FilletAngle;
 
-            if (outerThread)
-            {
-                bigDiameter = bigDiameter - wallThickness;
-                smallDiameter = smallDiameter - wallThickness;
-                AdapterSketch(bigDiameter, smallDiameter, wallThickness, highAdapter, stepThread);
-                BigDiameterThreadOuter(bigDiameter, highAdapter, stepThread, wallThickness);
-                SmallDiameterThreadOuter(smallDiameter, highAdapter, stepThread, wallThickness);
-            }
-            else
-            {
-                AdapterSketch(bigDiameter, smallDiameter, wallThickness, highAdapter, stepThread);
-                BigDiameterThread(bigDiameter, highAdapter, stepThread, wallThickness);
-                SmallDiameterThread(smallDiameter, highAdapter, stepThread, wallThickness);
-            }
+            AdapterSketch(bigDiameter, smallDiameter, wallThickness, highAdapter, stepThread);
+            BigDiameterThread(bigDiameter, highAdapter, stepThread, wallThickness);
+            SmallDiameterThread(smallDiameter, highAdapter, stepThread, wallThickness);
+            CreateFillet(filletAngle);
         }
     }
 }

@@ -12,7 +12,7 @@ namespace AdapterLibrary
         private float _smallDiameter;
         private float _stepThread;
         private float _wallThickness;
-        private bool _outerThread;
+        private float _filletAngle;
 
         /// <summary>
         /// Создание параметров.
@@ -24,14 +24,14 @@ namespace AdapterLibrary
         /// <param name="stepThread"></param>
         /// <param name="outerThread"></param>
         public AdapterParameters(float bigDiameter, float smallDiameter, float wallThickness,
-                          float highAdapter, float stepThread, bool outerThread)
+                          float highAdapter, float stepThread, float filletAngle)
         {
             BigDiameter = bigDiameter;
             SmallDiameter = smallDiameter;
             HighAdapter = highAdapter;
             WallThickness = wallThickness;
             StepThread = stepThread;
-            OuterThread = outerThread;
+            FilletAngle = filletAngle;
 
             Validate();
         }
@@ -82,10 +82,10 @@ namespace AdapterLibrary
             private set => _wallThickness = value;
         }
 
-        public bool OuterThread
+        public float FilletAngle
         {
-            get => _outerThread;
-            private set => _outerThread = value;
+            get => _filletAngle;
+            private set => _filletAngle = value;
         }
 
         //Валидация данных по значению.
