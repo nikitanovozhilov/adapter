@@ -86,7 +86,7 @@ namespace AdapterLibrary
             CreateSketch((short)Obj3dType.o3d_planeYOZ);
             _sketchEdit = (ksDocument2D)_sketchDefinition.BeginEdit();
             _sketchEdit.ksLineSeg((bigCoordX - wallThickness), 0, bigCoordX, 0, 1);
-            _sketchEdit.ksLineSeg(bigCoordX, 0, bigCoordX, halfHigh + wallThickness, 1);
+            _sketchEdit.ksLineSeg(bigCoordX, 0, bigCoordX, (halfHigh + wallThickness), 1);
             _sketchEdit.ksLineSeg(bigCoordX, (halfHigh + wallThickness),
                 (smallCoordX + wallThickness), (halfHigh + wallThickness), 1);
             _sketchEdit.ksLineSeg((smallCoordX + wallThickness), (halfHigh + wallThickness),
@@ -220,7 +220,7 @@ namespace AdapterLibrary
             entityCutEvolution.Create();
         }
 
-        private void CreateFillet(float filletAngle)
+        private void CreateFillet(float filletAngle, float highAdapter, float wallThickness)
         {
             ksEntity entityFillet = _part.NewEntity((short)Obj3dType.o3d_fillet);
             FilletDefinition filletDefinition = entityFillet.GetDefinition();
@@ -229,8 +229,32 @@ namespace AdapterLibrary
             ksEntityCollection entityCollectionPart = _part.EntityCollection((short)Obj3dType.o3d_edge);
             ksEntityCollection entityCollectionFillet = filletDefinition.array();
             entityCollectionFillet.Clear();
-            entityCollectionFillet.Add(entityCollectionPart.GetByIndex(5));
-            entityCollectionFillet.Add(entityCollectionPart.GetByIndex(6));
+
+            //Создание смещенной плоскости.
+            ksEntity entityDrawOffset = _part.NewEntity((short)Obj3dType.o3d_planeOffset);
+            ksPlaneOffsetDefinition planeDefinition = entityDrawOffset.GetDefinition();
+            planeDefinition.offset = highAdapter / 2 + wallThickness / 2;
+            planeDefinition.direction = false;
+            ksEntity EntityPlaneOffset = _part.GetDefaultEntity((short)Obj3dType.o3d_planeXOZ);
+            planeDefinition.SetPlane(EntityPlaneOffset);
+            entityDrawOffset.Create();
+
+            var measurer = _part.GetMeasurer();
+            measurer.SetObject1(entityDrawOffset);
+
+            for (var i = 0; i < entityCollectionPart.GetCount(); i++)
+            {
+                measurer.SetObject2(entityCollectionPart.GetByIndex(i));
+                measurer.Calc();
+
+                if (Math.Abs(measurer.distance)== 0)
+                {
+                    entityCollectionFillet.Add(entityCollectionPart.GetByIndex(i));
+                }
+            }
+            
+            //entityCollectionFillet.Add(entityCollectionPart.GetByIndex(6));
+            //entityCollectionFillet.Add(entityCollectionPart.GetByIndex(8));
             entityFillet.Create();
         }
 
@@ -253,9 +277,10 @@ namespace AdapterLibrary
             var filletAngle = parameters.FilletAngle;
 
             AdapterSketch(bigDiameter, smallDiameter, wallThickness, highAdapter, stepThread);
+            CreateFillet(filletAngle, highAdapter, wallThickness);
             BigDiameterThread(bigDiameter, highAdapter, stepThread, wallThickness);
             SmallDiameterThread(smallDiameter, highAdapter, stepThread, wallThickness);
-            CreateFillet(filletAngle);
+            
         }
     }
 }
