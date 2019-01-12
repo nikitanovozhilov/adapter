@@ -12,7 +12,7 @@ namespace AdapterLibrary
         private float _smallDiameter;
         private float _stepThread;
         private float _wallThickness;
-        private float _filletAngle;
+        private float _filletRadius;
 
         /// <summary>
         /// Создание параметров.
@@ -24,14 +24,14 @@ namespace AdapterLibrary
         /// <param name="stepThread"></param>
         /// <param name="outerThread"></param>
         public AdapterParameters(float bigDiameter, float smallDiameter, float wallThickness,
-                          float highAdapter, float stepThread, float filletAngle)
+                          float highAdapter, float stepThread, float filletRadius)
         {
             BigDiameter = bigDiameter;
             SmallDiameter = smallDiameter;
             HighAdapter = highAdapter;
             WallThickness = wallThickness;
             StepThread = stepThread;
-            FilletAngle = filletAngle;
+            FilletRadius = filletRadius;
 
             Validate();
         }
@@ -82,13 +82,13 @@ namespace AdapterLibrary
             private set => _wallThickness = value;
         }
 
-        public float FilletAngle
+        public float FilletRadius
         {
-            get => _filletAngle;
-            private set => _filletAngle = value;
+            get => _filletRadius;
+            private set => _filletRadius = value;
         }
 
-        //Валидация данных по значению.
+        // Валидация данных по значению.
         private void Validate()
         {
             if (BigDiameter - SmallDiameter < 10)
@@ -98,7 +98,7 @@ namespace AdapterLibrary
 
             if (HighAdapter > 120 || HighAdapter < 60 || float.IsNaN(HighAdapter) || float.IsInfinity(HighAdapter))
             {
-                throw  new ArgumentException("Высота муфты должна находиться в диапозоне от 60 мм до 120 мм");
+                throw new ArgumentException("Высота муфты должна находиться в диапозоне от 60 мм до 120 мм");
             }
 
             if (StepThread == 0f || float.IsNaN(StepThread) || float.IsInfinity(StepThread))
@@ -119,6 +119,11 @@ namespace AdapterLibrary
             if (SmallDiameter < 20 || SmallDiameter > 100 || float.IsNaN(SmallDiameter) || float.IsInfinity(SmallDiameter))
             {
                 throw new ArgumentException("Малый диаметр должен находиться в диапозоне от 20 до 110 мм");
+            }
+
+            if (FilletRadius < 1 || FilletRadius > 5 || float.IsNaN(FilletRadius) || float.IsInfinity(FilletRadius))
+            {
+                throw new ArgumentException("Радиус скругления должен находиться в диапозоне от 1 до 5");
             }
         }
     }

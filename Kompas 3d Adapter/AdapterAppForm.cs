@@ -50,17 +50,26 @@ namespace Kompas_3d_Adapter
 
         private void BuildButton_Click(object sender, EventArgs e)
         {
-            var val = 0f;
-            float.TryParse(FieldStepThread.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out val);
-            _parameters = new AdapterParameters((float)FieldBigDiameter.Value, (float)FieldSmallDiameter.Value, 
-                                         (float)FieldWallThickness.Value, (float)FieldHighAdapter.Value, val, (float)FieldFilletAngle.Value);
-            _builder = new AdapterBuilder(_kompasConnector);
-            _builder.AdapterBuild(_parameters);
+            try
+            {
+                var val = 0f;
+                float.TryParse(FieldStepThread.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out val);
+                _parameters = new AdapterParameters((float) FieldBigDiameter.Value, (float) FieldSmallDiameter.Value,
+                    (float) FieldWallThickness.Value, (float) FieldHighAdapter.Value, val,
+                    (float) FieldfilletRadius.Value);
+                _builder = new AdapterBuilder(_kompasConnector);
+                _builder.AdapterBuild(_parameters);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void FieldBigDiameter_ValueChanged(object sender, EventArgs e)
         {
             FieldSmallDiameter.Maximum = FieldBigDiameter.Value - 10;
+            FieldBigDiameter.Minimum = FieldSmallDiameter.Value + 10;
         }
     }
 }

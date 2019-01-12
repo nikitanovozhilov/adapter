@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using NUnit.Framework;
 using AdapterLibrary;
+using Environment = System.Environment;
 
 namespace AdapterUnitTest
 {
@@ -30,7 +31,7 @@ namespace AdapterUnitTest
             // Запуск приложения 
             RunApplication();
 
-            int count = 43;
+            int count = 150;
             int n = 0;
             while (n < count)
             {
@@ -56,7 +57,7 @@ namespace AdapterUnitTest
 
                 // Запись данных в файл 
                 _writerRAM.Write($"{Math.Round(ram / 1024 / 1024)}");
-                _writerCPU.Write($"{cpu}");
+                _writerCPU.Write($"{cpu / 8}");
                 _writerRAM.Write(Environment.NewLine);
                 _writerCPU.Write(Environment.NewLine);
                 _writerCPU.Flush();
@@ -67,7 +68,7 @@ namespace AdapterUnitTest
 
         private void RunApplication()
         {
-            _parametrs = new AdapterParameters(50, 40, 5, 100, (float)1.5, false);
+            _parametrs = new AdapterParameters(50, 40, 5, 100, (float)1.5, 5);
             _kompasConnector = new KompasConnector();
             _builder = new AdapterBuilder(_kompasConnector);
 
