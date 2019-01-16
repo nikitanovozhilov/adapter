@@ -33,7 +33,7 @@
             this.CloseKompasButton = new System.Windows.Forms.Button();
             this.StartKompasButton = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.FieldfilletRadius = new System.Windows.Forms.NumericUpDown();
+            this.FieldFilletRadius = new System.Windows.Forms.NumericUpDown();
             this.FieldHighAdapter = new System.Windows.Forms.NumericUpDown();
             this.FieldWallThickness = new System.Windows.Forms.NumericUpDown();
             this.FieldSmallDiameter = new System.Windows.Forms.NumericUpDown();
@@ -45,9 +45,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.FieldStepThread = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.FieldfilletRadius)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FieldFilletRadius)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FieldHighAdapter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FieldWallThickness)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FieldSmallDiameter)).BeginInit();
@@ -88,7 +89,8 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.FieldfilletRadius);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.FieldFilletRadius);
             this.groupBox2.Controls.Add(this.FieldHighAdapter);
             this.groupBox2.Controls.Add(this.FieldWallThickness);
             this.groupBox2.Controls.Add(this.FieldSmallDiameter);
@@ -107,20 +109,25 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Parameters";
             // 
-            // FieldfilletRadius
+            // FieldFilletRadius
             // 
-            this.FieldfilletRadius.DecimalPlaces = 2;
-            this.FieldfilletRadius.Location = new System.Drawing.Point(102, 150);
-            this.FieldfilletRadius.Maximum = new decimal(new int[] {
-            6,
+            this.FieldFilletRadius.DecimalPlaces = 2;
+            this.FieldFilletRadius.Location = new System.Drawing.Point(102, 150);
+            this.FieldFilletRadius.Maximum = new decimal(new int[] {
+            5,
             0,
             0,
             0});
-            this.FieldfilletRadius.Name = "FieldfilletRadius";
-            this.FieldfilletRadius.Size = new System.Drawing.Size(101, 20);
-            this.FieldfilletRadius.TabIndex = 15;
-            this.FieldfilletRadius.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.FieldfilletRadius.Value = new decimal(new int[] {
+            this.FieldFilletRadius.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.FieldFilletRadius.Name = "FieldFilletRadius";
+            this.FieldFilletRadius.Size = new System.Drawing.Size(101, 20);
+            this.FieldFilletRadius.TabIndex = 15;
+            this.FieldFilletRadius.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.FieldFilletRadius.Value = new decimal(new int[] {
             5,
             0,
             0,
@@ -311,6 +318,15 @@
             this.FieldStepThread.Sorted = true;
             this.FieldStepThread.TabIndex = 0;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(5, 152);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(64, 13);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "Fillet Radius";
+            // 
             // AdapterAppForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -325,7 +341,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.FieldfilletRadius)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FieldFilletRadius)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FieldHighAdapter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FieldWallThickness)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FieldSmallDiameter)).EndInit();
@@ -351,7 +367,8 @@
         private System.Windows.Forms.NumericUpDown FieldSmallDiameter;
         private System.Windows.Forms.NumericUpDown FieldBigDiameter;
         private System.Windows.Forms.NumericUpDown FieldHighAdapter;
-        private System.Windows.Forms.NumericUpDown FieldfilletRadius;
+        private System.Windows.Forms.NumericUpDown FieldFilletRadius;
+        private System.Windows.Forms.Label label6;
     }
 }
 

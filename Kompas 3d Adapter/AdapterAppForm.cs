@@ -56,7 +56,7 @@ namespace Kompas_3d_Adapter
                 float.TryParse(FieldStepThread.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out val);
                 _parameters = new AdapterParameters((float) FieldBigDiameter.Value, (float) FieldSmallDiameter.Value,
                     (float) FieldWallThickness.Value, (float) FieldHighAdapter.Value, val,
-                    (float) FieldfilletRadius.Value);
+                    (float) FieldFilletRadius.Value);
                 _builder = new AdapterBuilder(_kompasConnector);
                 _builder.AdapterBuild(_parameters);
             }
