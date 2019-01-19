@@ -31,7 +31,7 @@ namespace AdapterUnitTest
             // Запуск приложения 
             RunApplication();
 
-            int count = 150;
+            int count = 1500;
             int n = 0;
             while (n < count)
             {

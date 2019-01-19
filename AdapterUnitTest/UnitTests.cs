@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using AdapterLibrary;
 using NUnit.Framework;
 
@@ -42,7 +38,7 @@ namespace AdapterUnitTest
                 "Некорректное значение StepThread");
             Assert.AreEqual
                 (expectedParameters.FilletRadius, actual.FilletRadius,
-                "Некорректное значение OuterThread");
+                "Некорректное значение FilletRadius");
         }
 
         [TestCase(float.NegativeInfinity, 20, 5, 60, 1, 5, "BigDiameter",

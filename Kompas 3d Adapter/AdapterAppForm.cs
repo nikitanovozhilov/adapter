@@ -7,10 +7,19 @@ namespace Kompas_3d_Adapter
 {
     public partial class AdapterAppForm : Form
     {
+        /// <summary>
+        /// Ссылка на КОМПАС-3D.
+        /// </summary>
         private KompasConnector _kompasConnector = new KompasConnector();
 
+        /// <summary>
+        /// Параметры детали.
+        /// </summary>
         private AdapterParameters _parameters;
 
+        /// <summary>
+        /// Ссылка на построитель.
+        /// </summary>
         private AdapterBuilder _builder;
 
         public AdapterAppForm()
@@ -54,8 +63,9 @@ namespace Kompas_3d_Adapter
             {
                 var val = 0f;
                 float.TryParse(FieldStepThread.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out val);
-                _parameters = new AdapterParameters((float) FieldBigDiameter.Value, (float) FieldSmallDiameter.Value,
-                    (float) FieldWallThickness.Value, (float) FieldHighAdapter.Value, val,
+                _parameters = new AdapterParameters((float) FieldBigDiameter.Value,
+                    (float) FieldSmallDiameter.Value, (float) FieldWallThickness.Value,
+                    (float) FieldHighAdapter.Value, val,
                     (float) FieldFilletRadius.Value);
                 _builder = new AdapterBuilder(_kompasConnector);
                 _builder.AdapterBuild(_parameters);

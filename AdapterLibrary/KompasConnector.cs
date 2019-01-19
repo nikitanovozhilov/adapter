@@ -8,34 +8,25 @@ namespace AdapterLibrary
     /// </summary>
     public class KompasConnector
     {
-        private KompasObject _kompasObject;
-
-        public KompasObject KompasObject
-        {
-            get
-            {
-                return _kompasObject;
-            }
-            set
-            {
-                _kompasObject = value;
-            }
-        }
+        /// <summary>
+        /// Объект КОМПАС-3D.
+        /// </summary>
+        public KompasObject KompasObject { get; set; }
 
         /// <summary>
         /// Запуск компаса.
         /// </summary>
         public void ConnectKompas()
         {
-            if (_kompasObject == null)
+            if (KompasObject == null)
             {
                 var type = Type.GetTypeFromProgID("KOMPAS.Application.5");
-                _kompasObject = (KompasObject)Activator.CreateInstance(type);
+                KompasObject = (KompasObject)Activator.CreateInstance(type);
             }
-            if (_kompasObject != null)
+            if (KompasObject != null)
             {
-                _kompasObject.Visible = true;
-                _kompasObject.ActivateControllerAPI();
+                KompasObject.Visible = true;
+                KompasObject.ActivateControllerAPI();
             }
         }
 
@@ -46,12 +37,12 @@ namespace AdapterLibrary
         {
             try
             {
-                _kompasObject.Quit();
-                _kompasObject = null;
+                KompasObject.Quit();
+                KompasObject = null;
             }
             catch
             {
-                _kompasObject = null;
+                KompasObject = null;
             }
         }
     }
