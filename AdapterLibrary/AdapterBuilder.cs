@@ -265,7 +265,7 @@ namespace AdapterLibrary
         private void CreateFillet(float filletRadius, float highAdapter, float wallThickness)
         {
             ksEntity entityFillet = _part.NewEntity((short)Obj3dType.o3d_fillet);
-            FilletDefinition filletDefinition = entityFillet.GetDefinition();
+            ksFilletDefinition filletDefinition = entityFillet.GetDefinition();
             filletDefinition.radius = filletRadius;
             filletDefinition.tangent = true;
             ksEntityCollection entityCollectionPart =

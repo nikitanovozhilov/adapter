@@ -28,12 +28,12 @@ namespace AdapterLibrary
             FilletRadius = filletRadius;
 
             Validate();
-            CheckValue(bigDiameter, "Неккоректное значение большого диаметра.");
-            CheckValue(smallDiameter, "Неккоректное значение малого диаметра.");
-            CheckValue(highAdapter, "Неккоректное значение высоты муфты.");
-            CheckValue(wallThickness, "Неккоректное значение толщины стенки.");
-            CheckValue(stepThread, "Неккоректное значение шага резьбы.");
-            CheckValue(filletRadius, "Неккоректное значение радиуса скругления.");
+            CheckValue(bigDiameter, "Некорректное значение большого диаметра.");
+            CheckValue(smallDiameter, "Некорректное значение малого диаметра.");
+            CheckValue(highAdapter, "Некорректное значение высоты муфты.");
+            CheckValue(wallThickness, "Некорректное значение толщины стенки.");
+            CheckValue(stepThread, "Некорректное значение шага резьбы.");
+            CheckValue(filletRadius, "Некорректное значение радиуса скругления.");
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace AdapterLibrary
         public float BigDiameter { get; private set; }
 
         /// <summary>
-        /// Большой диаметр.
+        /// Малый диаметр.
         /// </summary>
         public float SmallDiameter { get; private set; }
 
