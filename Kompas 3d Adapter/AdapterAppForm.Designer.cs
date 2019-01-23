@@ -33,6 +33,7 @@
             this.CloseKompasButton = new System.Windows.Forms.Button();
             this.StartKompasButton = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.FieldFilletRadius = new System.Windows.Forms.NumericUpDown();
             this.FieldHighAdapter = new System.Windows.Forms.NumericUpDown();
             this.FieldWallThickness = new System.Windows.Forms.NumericUpDown();
@@ -45,7 +46,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.FieldStepThread = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FieldFilletRadius)).BeginInit();
@@ -108,6 +108,15 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Parameters";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(5, 152);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(64, 13);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "Fillet Radius";
             // 
             // FieldFilletRadius
             // 
@@ -270,9 +279,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(5, 100);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(69, 13);
+            this.label4.Size = new System.Drawing.Size(78, 13);
             this.label4.TabIndex = 7;
-            this.label4.Text = "High Adapter";
+            this.label4.Text = "Height Adapter";
             // 
             // label3
             // 
@@ -318,15 +327,6 @@
             this.FieldStepThread.Sorted = true;
             this.FieldStepThread.TabIndex = 0;
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(5, 152);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(64, 13);
-            this.label6.TabIndex = 16;
-            this.label6.Text = "Fillet Radius";
-            // 
             // AdapterAppForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -335,6 +335,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(256, 336);
             this.MinimumSize = new System.Drawing.Size(256, 336);
             this.Name = "AdapterAppForm";
             this.Text = "Adapter";
