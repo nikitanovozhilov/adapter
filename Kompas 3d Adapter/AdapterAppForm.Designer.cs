@@ -223,6 +223,7 @@
             0,
             0,
             0});
+            this.FieldSmallDiameter.ValueChanged += new System.EventHandler(this.FieldSmallDiameter_ValueChanged);
             // 
             // FieldBigDiameter
             // 

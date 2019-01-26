@@ -36,7 +36,7 @@ namespace Kompas_3d_Adapter
                 StartKompasButton.Enabled = false;
                 CloseKompasButton.Enabled = true;
             }
-            catch (Exception ex)
+            catch (ArgumentException ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -51,7 +51,7 @@ namespace Kompas_3d_Adapter
                 StartKompasButton.Enabled = true;
                 CloseKompasButton.Enabled = false;
             }
-            catch (Exception ex)
+            catch (ArgumentException ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -70,16 +70,29 @@ namespace Kompas_3d_Adapter
                 _builder = new AdapterBuilder(_kompasConnector);
                 _builder.AdapterBuild(_parameters);
             }
-            catch (Exception ex)
+            catch (ArgumentException ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
+        /// <summary>
+        /// Обновление пределов значений.
+        /// </summary>
+        private void RefreshValues()
+        {
+            FieldSmallDiameter.Maximum = FieldBigDiameter.Value - (decimal)AdapterParameters.subDiameters;
+            FieldBigDiameter.Minimum = FieldSmallDiameter.Value + (decimal)AdapterParameters.subDiameters;
+        }
+
         private void FieldBigDiameter_ValueChanged(object sender, EventArgs e)
         {
-            FieldSmallDiameter.Maximum = FieldBigDiameter.Value - 10;
-            FieldBigDiameter.Minimum = FieldSmallDiameter.Value + 10;
+            RefreshValues();
+        }
+
+        private void FieldSmallDiameter_ValueChanged(object sender, EventArgs e)
+        {
+            RefreshValues();
         }
     }
 }

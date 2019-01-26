@@ -35,9 +35,14 @@ namespace AdapterLibrary
         private ksDocument2D _sketchEdit;
 
         /// <summary>
-        /// Ссылка на объект, содержащий ссылку на Компас-3Д.
+        /// Ссылка на объект, содержащий ссылку на Компас-3D.
         /// </summary>
         private KompasConnector _kompasConnector;
+        
+        /// <summary>
+        /// Коэффициент для расчета профиля резьбы.
+        /// </summary>
+        private const double threadProfile = 0.5 * (Math.PI / 3);
 
         /// <summary>
         /// Конструктор класса.
@@ -72,7 +77,7 @@ namespace AdapterLibrary
         /// <summary>
         /// Метод выдавливания вращением основного эскиза.
         /// </summary>
-        /// <returns>Выдавливание вращением.</returns>
+        /// <returns>Ссылка на результат выдавливания вращением.</returns>
         private ksEntity RotateSketch()
         {
             var entityRotated =
@@ -92,7 +97,7 @@ namespace AdapterLibrary
         /// </summary>
         /// <param name="of">Расстояние от базовой плоскости.</param>
         /// <param name="dir">Направление смещения.</param>
-        /// <returns>Смещенная плоскость.</returns>
+        /// <returns>Ссылка на смещенную плоскость.</returns>
         private ksEntity CreatePlaneOffset(float of, bool dir)
         {
             _part = _doc3D.GetPart((short)Part_Type.pTop_Part);
@@ -115,7 +120,7 @@ namespace AdapterLibrary
         /// <param name="height">Высота спирали.</param>
         /// <param name="buildDir">Направление построения спирали.</param>
         /// <param name="turnDir">Направление навивки спирали.</param>
-        /// <returns>Цилиндрическая спираль.</returns>
+        /// <returns>Ссылка на построенную спираль.</returns>
         private ksEntity CreateCylinder(ksEntity plane, float diameter, float stepThread,
             float height, bool buildDir, bool turnDir)
         {
@@ -142,7 +147,7 @@ namespace AdapterLibrary
         /// <param name="height">Высота спирали.</param>
         /// <param name="buildDir">Направление построения спирали.</param>
         /// <param name="turnDir">Направление навивки спирали.</param>
-        /// <returns>Создание вырезания.</returns>
+        /// <returns>Ссылка на результат вырезания по траектории.</returns>
         private ksEntity CutEvolution(ksEntity plane, float diameter, float stepThread,
             float height, bool buildDir, bool turnDir)
         {
@@ -169,7 +174,7 @@ namespace AdapterLibrary
         private void AdapterSketch(float bigDiameter, float smallDiameter,
             float wallThickness, float highAdapter, float stepThread)
         {
-            var halfSketchThread = (0.5 * stepThread * (60.0 * Math.PI / 180.0)) / 2;
+            var halfSketchThread = (stepThread * threadProfile) / 2;
             var halfHigh = highAdapter / 2 - wallThickness / 2;
             var bigCoordX = bigDiameter / 2 - halfSketchThread + wallThickness;
             var smallCoordX = smallDiameter / 2 - halfSketchThread;
@@ -209,7 +214,7 @@ namespace AdapterLibrary
             CreateSketch((short)Obj3dType.o3d_planeXOY);
             _sketchEdit = (ksDocument2D)_sketchDefinition.BeginEdit();
             var startY = 2 - stepThread / 2 + 0.01;
-            var startX = bigDiameter / 2 - (0.5 * stepThread * (60.0 * Math.PI / 180.0)) / 2;
+            var startX = bigDiameter / 2 - (stepThread * threadProfile) / 2;
             _sketchEdit.ksLineSeg
                 (startX, startY, startX, startY + stepThread - 0.02, 1);
             _sketchEdit.ksLineSeg
@@ -219,7 +224,7 @@ namespace AdapterLibrary
             _sketchDefinition.EndEdit();
 
             var height = highAdapter / 2 - wallThickness / 2;
-            var diameter = bigDiameter - (0.5 * stepThread * (60.0 * Math.PI / 180.0));
+            var diameter = bigDiameter - (stepThread * threadProfile);
             var plane = CreatePlaneOffset(2, true);
             CreateCylinder(plane, (float)diameter, stepThread, height, false, false);
             CutEvolution(plane, (float)diameter, stepThread, height, false, false);
@@ -239,8 +244,8 @@ namespace AdapterLibrary
             CreateSketch((short)Obj3dType.o3d_planeXOY);
             _sketchEdit = (ksDocument2D)_sketchDefinition.BeginEdit();
             var startY = (stepThread / 2 - 2 - 0.01) - highAdapter;
-            var startX = smallDiameter / 2 - (0.5 * stepThread *
-                                              (60.0 * Math.PI / 180.0)) / 2;
+            var startX = smallDiameter / 2 - (stepThread *
+                                              threadProfile) / 2;
             _sketchEdit.ksLineSeg
                 (startX, startY, startX, startY - stepThread + 0.02, 1);
             _sketchEdit.ksLineSeg(startX, startY - stepThread + 0.02,
@@ -250,7 +255,7 @@ namespace AdapterLibrary
             _sketchDefinition.EndEdit();
 
             var height = (highAdapter + 2) - (highAdapter / 2 + wallThickness / 2);
-            var diameter = smallDiameter - (0.5 * stepThread * (60.0 * Math.PI / 180.0));
+            var diameter = smallDiameter - (stepThread * threadProfile);
             var plane = CreatePlaneOffset(highAdapter + 2, false);
             CreateCylinder(plane, (float)diameter, stepThread, height, true, true);
             CutEvolution(plane, (float)diameter, stepThread, height, true, true);

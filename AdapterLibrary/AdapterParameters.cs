@@ -7,6 +7,10 @@ namespace AdapterLibrary
     /// </summary>
     public class AdapterParameters
     {
+        /// <summary>
+        /// Разница диаметров.
+        /// </summary>
+        public const float subDiameters = 10.0f;
 
         /// <summary>
         /// Создание параметров.
@@ -20,20 +24,21 @@ namespace AdapterLibrary
         public AdapterParameters(float bigDiameter, float smallDiameter,
             float wallThickness, float highAdapter, float stepThread, float filletRadius)
         {
-            BigDiameter = bigDiameter;
-            SmallDiameter = smallDiameter;
-            HighAdapter = highAdapter;
-            WallThickness = wallThickness;
-            StepThread = stepThread;
-            FilletRadius = filletRadius;
-
-            Validate();
             CheckValue(bigDiameter, "Некорректное значение большого диаметра.");
             CheckValue(smallDiameter, "Некорректное значение малого диаметра.");
             CheckValue(highAdapter, "Некорректное значение высоты муфты.");
             CheckValue(wallThickness, "Некорректное значение толщины стенки.");
             CheckValue(stepThread, "Некорректное значение шага резьбы.");
             CheckValue(filletRadius, "Некорректное значение радиуса скругления.");
+
+            Validate();
+
+            BigDiameter = bigDiameter;
+            SmallDiameter = smallDiameter;
+            HighAdapter = highAdapter;
+            WallThickness = wallThickness;
+            StepThread = stepThread;
+            FilletRadius = filletRadius;
         }
 
         /// <summary>
@@ -85,10 +90,10 @@ namespace AdapterLibrary
         /// </summary>
         private void Validate()
         {
-            if (BigDiameter - SmallDiameter < 10)
+            if (BigDiameter - SmallDiameter < subDiameters)
             {
                 throw new ArgumentException("Разница переходных диаметров " +
-                                            "должна быть не менее 10 мм");
+                                            $"должна быть не менее {subDiameters} мм");
             }
 
             if (HighAdapter > 120 || HighAdapter < 60)
